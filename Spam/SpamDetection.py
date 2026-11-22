@@ -1,6 +1,7 @@
 
 import pandas as pd
 import streamlit as st
+from pathlib import Path
 
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import train_test_split
@@ -8,7 +9,8 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.metrics import accuracy_score
 
 # Load Dataset
-data = pd.read_csv(r"C:\Users\omprakash sah\Downloads\spam (1).csv")
+data_path = Path(__file__).parent / "spam (1).csv"
+data = pd.read_csv(data_path)
 
 # Remove duplicate data
 data = data.drop_duplicates()
@@ -35,7 +37,6 @@ mess_train, mess_test, cat_train, cat_test = train_test_split(
 cv = CountVectorizer(stop_words='english')
 
 features = cv.fit_transform(mess_train)
-
 features_test = cv.transform(mess_test)
 
 # Create Model
@@ -79,6 +80,7 @@ if st.button("Validate"):
 
 # Display Accuracy
 st.write("Model Accuracy:", round(accuracy * 100, 2), "%")
+
 
 
 
