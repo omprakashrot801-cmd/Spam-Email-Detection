@@ -3,10 +3,10 @@ import pandas as pd
 import streamlit as st
 from pathlib import Path
 
-from scikit.feature_extraction.text import CountVectorizer
-from scikit.model_selection import train_test_split
-from scikit.naive_bayes import MultinomialNB
-from scikit.metrics import accuracy_score
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import accuracy_score
 
 # Load Dataset
 data_path = Path(__file__).parent / "spam (1).csv"
@@ -80,6 +80,7 @@ if st.button("Validate"):
 
 # Display Accuracy
 st.write("Model Accuracy:", round(accuracy * 100, 2), "%")
+
 
 
 
